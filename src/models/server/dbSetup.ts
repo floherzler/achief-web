@@ -1,32 +1,30 @@
 import { db } from "../name";
-// import createAnswerCollection from "./answer.collection";
-// import createCommentCollection from "./comment.collection";
-// import createQuestionCollection from "./question.collection";
-// import createVoteCollection from "./vote.collection";
-
 import { databases } from "./config";
+import createPlayersCollection from "./players.collection";
+import createProACollection from "./proA.collection";
+import createProBCollection from "./proB.collection";
+import createBBLCollection from "./bbl.collection";
+
 
 export default async function getOrCreateDB(){
   try {
     await databases.get(db)
-    console.log("Database connection")
+    console.log("Database already setup and connected!")
   } catch (error) {
     try {
       await databases.create(db, db)
-      console.log("database created")
-      //create collections
+      console.log("Database created!")
+      //create players and league collections
       await Promise.all([
-        // createQuestionCollection(),
-        // createAnswerCollection(),
-        // createCommentCollection(),
-        // createVoteCollection(),
+        createPlayersCollection(),
+        createProACollection(),
+        createProBCollection(),
+        createBBLCollection(),
       ])
-      console.log("Collection created")
-      console.log("Database connected")
+      console.log("Collections (Players, Leagues) created!")
     } catch (error) {
-      console.log("Error creating databases or collection", error)
+      console.log("Error creating databases or collection: ", error)
     }
   }
-
   return databases
 }
