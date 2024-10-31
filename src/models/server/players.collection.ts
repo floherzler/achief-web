@@ -30,7 +30,10 @@ export default async function createPlayersCollection() {
         // databases.createStringAttribute(db, playersCollection, "proAGames", 50, false, "", true),
         // databases.createStringAttribute(db, playersCollection, "proBGames", 50, false, "", true),
         // databases.createStringAttribute(db, playersCollection, "bblGames", 50, false, "", true),
-
+        databases.createStringAttribute(db, playersCollection, "proAid", 50, false),
+        databases.createStringAttribute(db, playersCollection, "proBid", 50, false),
+        databases.createStringAttribute(db, playersCollection, "bblid", 50, false),
+        
         // NOTE: annoyingly, I couldn't manage creating String Array attributes from the Node SDK
         // so I created the last three attributes manually in the console 
     ]);

@@ -30,7 +30,7 @@ These updates then will show up as realtime changes in the Web UI.
 Basic UI components with [shadcn](https://ui.shadcn.com/)
 
 ```bash
-npx shadcn@latest add button card input label popover avatar badge
+npx shadcn@latest add button card input label popover avatar badge dialog toggle-group
 ```
 
 # Future Plans

@@ -1,15 +1,19 @@
-import Image from "next/image";
-import React from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+// src/app/page.tsx
+
+import React from "react"
+import { CreatePlayerForm } from "@/components/CreatePlayerForm"
+import PlayerList from "@/components/PlayerList"
+import { getPlayers } from "./actions/getPlayers"
 
 export default async function Home() {
+  const players: Player[] = await getPlayers()
   return (
     <main>
-      <div>
-        <h1>aChief</h1>
-        <p>Track your career milestones!</p>
+      <PlayerList initialPlayers={players} />
+      <div style={{ textAlign: "center", margin: "20px 0" }}>
+        <span style={{ fontSize: "24px" }}>↓</span>
       </div>
+      <CreatePlayerForm />
     </main>
-  );
+  )
 }
