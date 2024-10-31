@@ -193,8 +193,6 @@ export async function POST(request: Request) {
       // convert to yyyymmdd
       const parsedBD = rawBirthday.split('-').join('');
       const playerName = rawPlayerInfo.firstName + ' ' + rawPlayerInfo.lastName;
-      // TODO: get Player Name from response
-      // const playerName = "Marc William Friederici"
       const playerID = playerName.toLowerCase().replace(/[\s\W]+/g, '-');
       const playerInitials = playerName.split(' ').map((name, index, arr) => {
         if (index === 0 || index === arr.length - 1) {
