@@ -255,7 +255,6 @@ export async function POST(request: Request) {
           turnovers: parseInt($(cells[14]).text().trim(), 10) || 0,
           efficiency: parseInt($(cells[15]).text().trim(), 10) || 0,
         };
-        // console.log(gameStats);
 
         // function to add to career stats
         overallStats.careerGames += 1;
@@ -277,7 +276,6 @@ export async function POST(request: Request) {
         // transform raw date to YYYY-MM-DD
         const dateString = gameStats.date.toISOString().split('T')[0].replace(/-/g, '');
         const gameID = `${dateString}-${playerInitials}-${parsedBD}-${gameStats.home ? 'H' : 'A'}`;
-        console.log(gameID);
         if (gameMinutes > 0) {
           try {
               databases.createDocument(db, proBCollection, gameID, gameStats, [Permission.read("any")])
@@ -328,7 +326,6 @@ export async function POST(request: Request) {
           ...overallStats,
         };
 
-        console.log(playerDoc);
         const { $id, $createdAt, ...playerDocWithout$ } = playerDoc;
         databases.createDocument(db, playersCollection, playerID, playerDocWithout$, [Permission.read("any")]).then(() => {
           console.log(`Successfully created document for playerID: ${playerID}`);
