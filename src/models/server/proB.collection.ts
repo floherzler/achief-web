@@ -1,4 +1,4 @@
-import { IndexType, Permission } from "node-appwrite";
+import { Permission } from "node-appwrite";
 import { proBCollection, db } from "../name";
 import { databases } from "./config";
 

@@ -131,7 +131,7 @@ export function CreatePlayerForm() {
 
           {/* Status Message */}
           {status && (
-            <Badge variant={status.startsWith("Error") ? "destructive" : "outline"} className="w-full mt-2 text-center">
+            <Badge variant={status.startsWith("Error") ? "destructive" : "outline"} className="mt-2 mx-auto text-center">
               {status}
             </Badge>
           )}
