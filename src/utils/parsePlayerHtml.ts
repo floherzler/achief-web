@@ -254,7 +254,7 @@ export async function parsePlayerHtml(url: string, season: string) {
   
         // in last iteration use playerInfo to create doc
         if (year === currentYear) {
-            const playerInfo: PlayerInfo = {
+          const playerInfo: PlayerInfo = {
             name: rawPlayerInfo.firstName + ' ' + rawPlayerInfo.lastName,
             avatarUrl: rawPlayerInfo.avatarUrl ?? '',
             team: rawPlayerInfo.team ?? '',
@@ -268,12 +268,14 @@ export async function parsePlayerHtml(url: string, season: string) {
             joinedDate: new Date(rawPlayerInfo.joinedDate || new Date()),
             stations: rawPlayerInfo.stations ?? [],
           };
+
+          console.log('Overall stats:', overallStats);
   
           // divide percentages by total games
           overallStats.careerFTperc /= overallStats.careerGames;
           overallStats.career2perc /= overallStats.careerGames;
           overallStats.career3perc /= overallStats.careerGames;
-  
+
           const playerDoc: Player = {
             $id: playerID,
             $createdAt: new Date().toISOString(),
