@@ -139,7 +139,7 @@ export async function parsePlayerHtml(url: string, season: string) {
         console.log(`Scraping player stats for season: ${seasonParam}`);
         const response = await axios.post('/api/createPlayer', {
             url: url,
-            season: season,
+            season: seasonParam,
           });
 
         console.log('Response:', response.data);
