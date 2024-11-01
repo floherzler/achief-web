@@ -145,7 +145,7 @@ export async function parsePlayerHtml(url: string, season: string) {
         console.log('Response:', response.data);
   
         const $ = cheerio.load(response.data.html);
-        const rawPlayerInfo = extractPlayerInfo(response.data);
+        const rawPlayerInfo = extractPlayerInfo(response.data.html);
         const rawBirthday = rawPlayerInfo.birthday?.split('.').reverse().join('-') || '2000-01-01';
         // convert to yyyymmdd
         const parsedBD = rawBirthday.split('-').join('');
