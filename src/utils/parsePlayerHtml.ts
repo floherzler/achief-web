@@ -106,7 +106,7 @@ export async function parsePlayerHtml(url: string, season: string) {
       return NextResponse.json({ error: 'Invalid URL' }, { status: 400 });
     }
   
-    const { startYear } = parseSeason(season);
+    const { startYear, endYear } = parseSeason(season);
     const currentYear = new Date().getFullYear();
     const playerStats: GameStats[] = [];
     const overallStats: OverallStats = { 
@@ -141,6 +141,8 @@ export async function parsePlayerHtml(url: string, season: string) {
             url: url,
             season: season,
           });
+
+        console.log('Response:', response.data);
   
         const $ = cheerio.load(response.data.html);
         const rawPlayerInfo = extractPlayerInfo(response.data);
