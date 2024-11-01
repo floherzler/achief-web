@@ -6,7 +6,7 @@ export async function getPlayers(): Promise<Player[]> {
       db,
       playersCollection,
     )
-    console.log(response.documents)
+    response.documents.forEach(doc => console.log(doc.name))
   
     const players: Player[] = response.documents.map((doc) => ({
         $id: doc.$id,

@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Badge } from "./ui/badge"
-import axios from "axios"
+import { parsePlayerHtml } from "@/utils/parsePlayerHtml"
 
 // Define the form schema with Zod
 const formSchema = z.object({
@@ -51,12 +51,9 @@ export function CreatePlayerForm() {
     setLoading(true)
     setStatus(null) // Reset status
     try {
-      const response = await axios.post('/api/createPlayer', {
-        url: data.playerURL,
-        season: data.season,
-      });
-      console.log(response.data) // Handle the response data
-      setStatus("Player created successfully!")
+      const player = await parsePlayerHtml(data.playerURL, data.season) as Player
+      console.log(`Added ${player.careerGames} games for ${player.name}`)
+      setStatus(`Player created successfully!`)
     } catch (error: any) {
       setStatus(`Error: ${error.response?.data?.message || "Something went wrong."}`)
     } finally {
